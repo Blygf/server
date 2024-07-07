@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ultimate Checklist App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: #333;
         }
         header {
-            background-color: #6a0dad;
+            background-color: rgba(106, 13, 173, 0.9);
             color: white;
-            padding: 20px 0;
+            padding: 40px 0;
             text-align: center;
+            position: relative;
+        }
+        header::after {
+            content: '';
+            background: url('picture.png') no-repeat center center/cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.5;
+            z-index: -1;
         }
         .container {
             max-width: 1200px;
@@ -23,23 +37,28 @@
             padding: 20px;
         }
         .hero {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 50px 20px;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            border-radius: 10px;
+            animation: fadeInUp 1s;
         }
         .hero img {
             max-width: 100%;
             height: auto;
+            display: none;
         }
         .hero h1 {
             margin-top: 20px;
             font-size: 2.5em;
+            animation: bounceInDown 1s;
         }
         .hero p {
             font-size: 1.2em;
             margin: 20px 0;
+            animation: fadeIn 2s;
         }
         .signup {
             background-color: #6a0dad;
@@ -48,15 +67,20 @@
             text-align: center;
             margin: 20px 0;
             border-radius: 5px;
+            animation: fadeInUp 2s;
         }
         .signup a {
             color: white;
             text-decoration: none;
             background-color: #4CAF50;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 15px 30px;
+            border-radius: 50px;
             display: inline-block;
             margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .signup a:hover {
+            background-color: #45a049;
         }
         .features {
             display: flex;
@@ -65,15 +89,26 @@
             margin-top: 20px;
         }
         .feature {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             flex: 1;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            animation: fadeIn 3s;
         }
         .feature h3 {
             margin-top: 10px;
+            font-size: 1.5em;
+            animation: bounceInUp 1.5s;
+        }
+        .feature p {
+            font-size: 1.1em;
+            animation: fadeIn 1.5s;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
         }
         footer {
             background-color: #6a0dad;
@@ -87,37 +122,74 @@
                 flex-direction: column;
             }
         }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounceInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-2000px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes bounceInUp {
+            from {
+                opacity: 0;
+                transform: translateY(2000px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Ultimate Checklist App</h1>
+        <h1 class="animate__animated animate__bounceInDown">Ultimate Checklist App</h1>
         <p>Your Productivity Partner</p>
     </header>
     <div class="container">
-        <div class="hero">
-            <img src="picture.png" alt="Checklist App">
+        <div class="hero animate__animated animate__fadeInUp">
             <h1>Welcome to the Ultimate Checklist App</h1>
             <p>Stay organized and productive with our simple and effective checklist app. Manage your tasks effortlessly and never miss a deadline again.</p>
-            <div class="signup">
+            <div class="signup animate__animated animate__fadeInUp">
                 <h2>Sign up today and boost your productivity!</h2>
                 <a href="#signup">Get Started</a>
             </div>
         </div>
         <div class="features">
-            <div class="feature">
+            <div class="feature animate__animated animate__fadeIn">
                 <h3>Easy to Use</h3>
                 <p>Our app is designed with simplicity in mind. Create, edit, and manage your tasks with ease.</p>
             </div>
-            <div class="feature">
+            <div class="feature animate__animated animate__fadeIn">
                 <h3>Cross-Platform</h3>
                 <p>Whether you're on your phone, tablet, or desktop, our app works seamlessly across all your devices.</p>
             </div>
-            <div class="feature">
+            <div class="feature animate__animated animate__fadeIn">
                 <h3>Stay Organized</h3>
                 <p>With features like task prioritization and reminders, you'll stay on top of your schedule effortlessly.</p>
             </div>
-            <div class="feature">
+            <div class="feature animate__animated animate__fadeIn">
                 <h3>Customizable</h3>
                 <p>Personalize your checklists with themes, colors, and more to match your style.</p>
             </div>
