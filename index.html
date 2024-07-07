@@ -14,21 +14,20 @@
             color: #333;
         }
         header {
-            background-color: rgba(106, 13, 173, 0.9);
+            background: url('picture.png') no-repeat center center/cover;
             color: white;
-            padding: 40px 0;
+            padding: 60px 0;
             text-align: center;
             position: relative;
         }
         header::after {
             content: '';
-            background: url('picture.png') no-repeat center center/cover;
+            background: rgba(106, 13, 173, 0.8);
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            opacity: 0.5;
             z-index: -1;
         }
         .container {
@@ -44,11 +43,6 @@
             margin-bottom: 20px;
             border-radius: 10px;
             animation: fadeInUp 1s;
-        }
-        .hero img {
-            max-width: 100%;
-            height: auto;
-            display: none;
         }
         .hero h1 {
             margin-top: 20px;
@@ -109,6 +103,29 @@
         }
         .feature:hover {
             transform: translateY(-10px);
+        }
+        .testimonial, .benefit {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            animation: fadeIn 3s;
+        }
+        .testimonial h3, .benefit h3 {
+            margin-top: 10px;
+            font-size: 1.5em;
+            animation: bounceInUp 1.5s;
+        }
+        .testimonial p, .benefit p {
+            font-size: 1.1em;
+            animation: fadeIn 1.5s;
+        }
+        .testimonial img {
+            border-radius: 50%;
+            margin-bottom: 20px;
+            animation: bounceInDown 1s;
         }
         footer {
             background-color: #6a0dad;
@@ -192,6 +209,33 @@
             <div class="feature animate__animated animate__fadeIn">
                 <h3>Customizable</h3>
                 <p>Personalize your checklists with themes, colors, and more to match your style.</p>
+            </div>
+        </div>
+        <div class="testimonial animate__animated animate__fadeIn">
+            <img src="https://via.placeholder.com/100" alt="User Testimonial" class="animate__animated animate__bounceInDown">
+            <h3>What Our Users Say</h3>
+            <p>"The Ultimate Checklist App has transformed the way I organize my tasks. It's user-friendly and has helped me stay on top of my work effortlessly." - Jane Doe</p>
+        </div>
+        <div class="benefit animate__animated animate__fadeIn">
+            <h3>Why Choose Us?</h3>
+            <p>Our app is not just another task manager. It's a comprehensive tool designed to boost your productivity and simplify your life. With advanced features and a user-friendly interface, you'll wonder how you ever managed without it.</p>
+        </div>
+        <div class="features">
+            <div class="feature animate__animated animate__fadeIn">
+                <h3>Real-Time Sync</h3>
+                <p>All your tasks are synced in real-time across all your devices. Start a task on your phone and finish it on your desktop without missing a beat.</p>
+            </div>
+            <div class="feature animate__animated animate__fadeIn">
+                <h3>Collaborate with Ease</h3>
+                <p>Share your checklists with colleagues, friends, or family. Collaborate on projects and manage tasks together seamlessly.</p>
+            </div>
+            <div class="feature animate__animated animate__fadeIn">
+                <h3>Secure and Private</h3>
+                <p>We prioritize your privacy. Your data is encrypted and securely stored, ensuring that only you have access to your tasks.</p>
+            </div>
+            <div class="feature animate__animated animate__fadeIn">
+                <h3>24/7 Support</h3>
+                <p>Our dedicated support team is here to help you 24/7. Have a question or need assistance? We're just a message away.</p>
             </div>
         </div>
     </div>
