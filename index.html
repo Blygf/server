@@ -20,6 +20,7 @@
             text-align: center;
             position: relative;
             background: linear-gradient(135deg, #6a0dad, #ff6f61);
+            animation: slideInDown 1s;
         }
         .container {
             max-width: 1200px;
@@ -33,7 +34,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px;
             border-radius: 10px;
-            animation: fadeInUp 1s;
+            animation: slideInLeft 1s;
         }
         .hero h1 {
             margin-top: 20px;
@@ -52,7 +53,7 @@
             text-align: center;
             margin: 40px 0;
             border-radius: 5px;
-            animation: fadeInUp 2s;
+            animation: slideInRight 1s;
         }
         .signup a {
             color: white;
@@ -72,6 +73,7 @@
             flex-wrap: wrap;
             gap: 40px;
             margin-top: 40px;
+            animation: fadeInUp 1s;
         }
         .feature {
             background-color: rgba(255, 255, 255, 0.9);
@@ -81,7 +83,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             transition: transform 0.3s;
-            animation: fadeIn 3s;
+            animation: slideInUp 1s;
         }
         .feature h3 {
             margin-top: 10px;
@@ -103,7 +105,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: 40px 0;
             border-radius: 10px;
-            animation: fadeIn 3s;
+            animation: slideInLeft 1s;
         }
         .testimonial h3 {
             margin-top: 10px;
@@ -112,6 +114,7 @@
         }
         .testimonial p {
             font-size: 1.1em;
+            color: #ff6f61;
             animation: fadeIn 1.5s;
         }
         .testimonial img {
@@ -126,7 +129,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: 40px 0;
             border-radius: 10px;
-            animation: fadeIn 3s;
+            animation: slideInRight 1s;
         }
         .benefit h3 {
             margin-top: 10px;
@@ -154,6 +157,7 @@
             text-align: center;
             padding: 20px 0;
             margin-top: 40px;
+            animation: slideInUp 1s;
         }
         @media (max-width: 768px) {
             .features {
@@ -198,6 +202,46 @@
                 transform: translateY(0);
             }
         }
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -218,21 +262,21 @@
             <img src="picture.png" alt="Checklist App">
         </div>
         <div class="features">
-            <div class="feature animate__animated animate__fadeIn">
+            <div class="feature animate__animated animate__slideInUp">
                 <h3>Easy to Use</h3>
                 <p>Our app is designed with simplicity in mind. Create, edit, and manage your tasks with ease.</p>
             </div>
-            <div class="feature animate__animated animate__fadeIn">
+            <div class="feature animate__animated animate__slideInUp">
                 <h3>Cross-Platform</h3>
                 <p>Whether you're on your phone, tablet, or desktop, our app works seamlessly across all your devices.</p>
             </div>
         </div>
-        <div class="testimonial animate__animated animate__fadeIn">
+        <div class="testimonial animate__animated animate__slideInLeft">
             <img src="https://via.placeholder.com/100" alt="User Testimonial" class="animate__animated animate__bounceInDown">
             <h3>What Our Users Say</h3>
             <p>"The Ultimate Checklist App has transformed the way I organize my tasks. It's user-friendly and has helped me stay on top of my work effortlessly." - Jane Doe</p>
         </div>
-        <div class="benefit animate__animated animate__fadeIn">
+        <div class="benefit animate__animated animate__slideInRight">
             <h3>Why Choose Us?</h3>
             <p>Our app is not just another task manager. It's a comprehensive tool designed to boost your productivity and simplify your life. With advanced features and a user-friendly interface, you'll wonder how you ever managed without it.</p>
         </div>
