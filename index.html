@@ -3,12 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello Woahoj ako sa masrld</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Nota Guru - Your Ultimate Checklist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #4A148C;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero {
+            background-image: url('image.png');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            flex-direction: column;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 1.5rem;
+        }
+        .content {
+            padding: 2rem 0;
+        }
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+        }
+        .benefits div {
+            background: #F3E5F5;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .create-account {
+            display: block;
+            width: 200px;
+            margin: 1rem auto;
+            padding: 1rem;
+            background-color: #4A148C;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #4A148C;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, Ur my daddy!</h1>
+    <header>
+        <h1>Nota Guru</h1>
+        <p>Your Ultimate Checklist Tool</p>
+    </header>
+    <div class="hero">
+        <h1>Stay Organized with Nota Guru</h1>
+        <p>Effortlessly manage your tasks and boost your productivity.</p>
+        <a href="login.php" class="create-account">Create an Account</a>
     </div>
+    <div class="container">
+        <div class="content">
+            <h2>Why Choose Nota Guru?</h2>
+            <div class="benefits">
+                <div>
+                    <h3>Simple and Intuitive</h3>
+                    <p>Our checklist tool is designed to be user-friendly and easy to navigate.</p>
+                </div>
+                <div>
+                    <h3>Stay on Track</h3>
+                    <p>Set reminders and never miss a task again.</p>
+                </div>
+                <div>
+                    <h3>Collaborate with Others</h3>
+                    <p>Share your checklists and work together with your team.</p>
+                </div>
+            </div>
+            <a href="login.php" class="create-account">Create an Account</a>
+            <a href="login.php" class="create-account">Create an Account</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Nota Guru. All rights reserved.</p>
+        <a href="login.php" class="create-account">Create an Account</a>
+    </footer>
 </body>
 </html>
