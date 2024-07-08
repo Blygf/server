@@ -17,11 +17,26 @@ $query = "SELECT * FROM challenges WHERE userid = $userid ORDER BY date_added DE
 
 $result = $DB->read($query);
 
+
+
+
 if ($result && count($result) > 0) {
     $checklist_items = $result;
     foreach ($checklist_items as $index => $item): ?>
-        <li class="checklist-item">
-            <input type="checkbox" id="item-<?php echo $index; ?>">
+<?php $query = "SELECT challengeid FROM completed WHERE challengeid = " . $item['challengeid'] . " AND DATE(time) = CURDATE();";
+$checked_result = $DB->read($query); ?>
+
+        <li class="checklist-item" data-challengeid="<?php echo htmlspecialchars($item['challengeid']); ?>">
+            <input type="checkbox" id="item-<?php echo $index; ?>"<?php
+            if (!empty($checked_result[0]['challengeid']))
+            {
+                if ($item['challengeid'] == $checked_result[0]['challengeid'])
+                {
+                    echo "checked";
+                }   
+            }
+            
+        ?>>
             <label for="item-<?php echo $index; ?>"><?php echo htmlspecialchars($item['name']); ?></label>
             <img src="more.png" class="more-icon" onclick="toggleDescription(<?php echo $index; ?>)" alt="More">
             <div class="description" style="display: none;"><?php echo htmlspecialchars($item['description']); ?></div>

@@ -14,7 +14,6 @@ if ($result)
 }
 
 $query = "SELECT * FROM challenges WHERE userid = $userid ORDER BY date_added DESC";
-
 $result = $DB->read($query);
 
 if ($result && count($result) > 0) {

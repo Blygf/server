@@ -1,13 +1,6 @@
 <?php
-session_start();
-include("classes/autoload.php");
-
-$login = new Login();
-
-// Verify session token using check_login method
-$login->check_login($_SESSION['session_token'] ?? null);
-
-$email = "hugo@volny.sk";
-$query = "select userid from users where email = '$email' limit 1;";
+require_once("classes/autoload.php");
 $DB = new Database();
-print_r($DB->read($query)[0]['userid']);
+$query = "SELECT challengeid FROM completed where challengeid = 69";
+$checked_result = $DB->read($query);
+print_r($checked_result[0]['challengeid']);

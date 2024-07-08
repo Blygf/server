@@ -395,6 +395,7 @@ if ($result) {
             .then(response => response.text())
             .then(data => {
                 document.getElementById('checklist').innerHTML = data;
+                addCheckboxListeners(); // Add this line
             })
             .catch(error => console.error('Error fetching items:', error));
     }
@@ -437,7 +438,36 @@ if ($result) {
 
     window.onload = function() {
         closeModal(); // Ensure modal is hidden when the page loads
+        addCheckboxListeners(); // Add this line
     };
+
+    function addCheckboxListeners() {
+        document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function(event) {
+                const challengeId = this.closest('.checklist-item').getAttribute('data-challengeid');
+                const status = this.checked ? 'CHECKED' : 'UNCHECKED';
+
+                const formData = new FormData();
+                formData.append('session_token', '<?php echo $_SESSION['session_token']; ?>');
+                formData.append('challenge_id', challengeId);
+                formData.append('status', status);
+
+                fetch('save.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status !== 'success') {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    }
 
     window.onclick = function(event) {
         var modal = document.getElementById('modal');
