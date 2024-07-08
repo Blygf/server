@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if session token is set
+if (isset($_SESSION['session_token'])) {
+    header('Location: /checklist');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -255,7 +265,7 @@
             <p>Stay organized and productive with our simple and effective checklist app. Manage your tasks effortlessly and never miss a deadline again.</p>
             <div class="signup animate__animated animate__fadeInUp">
                 <h2>Sign up today and boost your productivity!</h2>
-                <a href="#signup">Get Started</a>
+                <a href="/checklist">Get Started</a>
             </div>
         </div>
         <div class="center-image animate__animated animate__fadeIn">
@@ -283,7 +293,7 @@
         <div class="signup animate__animated animate__fadeInUp">
             <h2>Ready to Get Started?</h2>
             <p>Join thousands of users who have boosted their productivity with the Ultimate Checklist App.</p>
-            <a href="#signup">Sign Up Now</a>
+            <a href="/checklist">Sign Up Now</a>
         </div>
     </div>
     <footer>
