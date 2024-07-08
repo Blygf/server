@@ -2,11 +2,34 @@
 
 class Database
 {
+    private $host;
+    private $username;
+    private $password;
+    private $db;
 
-	private $host = "localhost";
-	private $username = "root";
-	private $password = "";
-	private $db = "checklist_db";
+    function __construct()
+    {
+        $os = php_uname('s'); // Get the operating system name
+        
+        // Set credentials based on the operating system
+        if (strpos($os, 'Linux') !== false) { // Check if running on Ubuntu (Linux)
+            $this->host = "localhost";
+            $this->username = "checklist";
+            $this->password = "ap:sU98b-~P4>{u+!<6E_c";
+            $this->db = "ubuntu_database";
+        } elseif (strpos($os, 'Windows') !== false) { // Check if running on Windows
+            $this->host = "localhost";
+            $this->username = "root";
+            $this->password = "";
+            $this->db = "windows_database";
+        } else {
+            // Default credentials if the OS cannot be determined
+            $this->host = "localhost";
+            $this->username = "root";
+            $this->password = "";
+            $this->db = "checklist_db";
+        }
+    }
 
 	function connect()
 	{
