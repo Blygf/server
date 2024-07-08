@@ -1,11 +1,20 @@
 <?php
 require_once("classes/autoload.php");
-
-
-
-$userid = $_SESSION['userid'] ?? 0;
-$query = "SELECT * FROM challenges WHERE userid = $userid ORDER BY date_added DESC";
 $DB = new Database();
+$token = $_SESSION['session_token'];
+$query = "SELECT userid FROM sessions WHERE token = '$token' LIMIT 1";
+$result = $DB->read($query);
+
+if ($result) 
+{
+    $userid = $result[0]['userid'];
+} else
+{
+    die;
+}
+
+$query = "SELECT * FROM challenges WHERE userid = $userid ORDER BY date_added DESC";
+
 $result = $DB->read($query);
 
 if ($result && count($result) > 0) {

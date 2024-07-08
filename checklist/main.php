@@ -14,7 +14,6 @@ $result = $DB->read($query);
 
 if ($result) {
     $userid = $result[0]['userid'];
-    $_SESSION['userid'] = $userid; // Set userid in session
     $query = "SELECT * FROM users WHERE userid = '$userid' LIMIT 1";
     $userinfo = $DB->read($query);
     if ($userinfo) {
@@ -289,7 +288,7 @@ if ($result) {
     <a href="#" class="add-button" id="addButton">+</a>
     <footer>
         <div class="footer-buttons">
-            <a href="#" class="footer-link">Edit</a>
+            <a href="edit.php" class="footer-link">Edit</a>
             <a href="#" class="footer-link" onclick="openMenu()">Menu</a>
         </div>
     </footer>
@@ -434,7 +433,7 @@ if ($result) {
     });
 
     // Fetch items every 5 seconds
-    setInterval(fetchItems, 5000);
+    // setInterval(fetchItems, 5000);
 
     window.onload = function() {
         closeModal(); // Ensure modal is hidden when the page loads
