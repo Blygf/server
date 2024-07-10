@@ -111,6 +111,7 @@ class Login
 		if(!empty($token))
 		{
 
+			$token = filter_var($token, FILTER_SANITIZE_STRING);
 			$query = "select * from sessions where token = '$token' limit 1";
 
 			$DB = new Database();

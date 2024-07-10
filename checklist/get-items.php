@@ -1,7 +1,7 @@
 <?php
 require_once("classes/autoload.php");
 $DB = new Database();
-$token = $_SESSION['session_token'];
+$token = isset($_SESSION['session_token']) ? filter_var($_SESSION['session_token'], FILTER_SANITIZE_STRING) : '';
 $query = "SELECT userid FROM sessions WHERE token = '$token' LIMIT 1";
 $result = $DB->read($query);
 

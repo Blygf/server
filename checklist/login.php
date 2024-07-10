@@ -36,64 +36,180 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Checklist App Login</title>
     <style>
+        @keyframes typing {
+            0%, 10% { width: 0; }
+            10%, 90% { width: 20ch; }
+            100% { width: 0; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #bb86fc; }
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Roboto Mono', monospace;
+            background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+            color: #e0e0e0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
+        }
+
+        .title {
+            font-size: 3rem;
+            color: #bb86fc;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.15em solid #bb86fc;
+            width: 20ch;
+            animation: typing 6.5s steps(20, end) infinite, blink-caret 0.75s step-end infinite;
+            margin-bottom: 60px; /* Increased space between title and box */
+            margin-top: -100px;
         }
 
         .login-container {
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            width: 300px;
+            background-color: #1e1e1e;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 400px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-in-out, slideIn 1s ease-in-out;
+            margin-top: 20px; /* Additional space above the box */
         }
 
-        .login-container h2 {
-            margin-bottom: 20px;
+        .login-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             text-align: left;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            color: #bb86fc;
+            font-size: 1.2rem;
         }
 
         .form-group input {
             width: 100%;
-            padding: 8px;
+            padding: 15px;
             box-sizing: border-box;
+            background-color: #333;
+            border: 1px solid #bb86fc;
+            border-radius: 5px;
+            color: #e0e0e0;
+            transition: border-color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .form-group input:focus {
+            border-color: #6200ea;
+            outline: none;
         }
 
         button {
-            background-color: #007BFF;
+            background: linear-gradient(135deg, #bb86fc, #6200ea);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 20px 50px; /* Increased width */
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 30px;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #9c27b0, #3700b3);
+            transform: scale(1.1);
+        }
+
+        button:active {
+            transform: scale(1.05);
+        }
+
+        .terms {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #bb86fc;
+        }
+
+        .terms a {
+            color: #6200ea;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            background-color: #1e1e1e;
+            color: #bb86fc;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1rem;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2.5rem;
+                width: 20ch;
+                animation: typing 6.5s steps(20, end) infinite, blink-caret 0.75s step-end infinite;
+                margin-top: -120px;
+            }
+
+            .login-container {
+                width: 320px;
+                padding: 30px;
+                margin-top: 30px; /* Additional space above the box */
+            }
+
+            .form-group label {
+                font-size: 1.1rem;
+            }
+
+            .form-group input {
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 15px 40px; /* Adjusted width for mobile */
+                font-size: 1.1rem;
+            }
+
+            .terms {
+                font-size: 0.8rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="title">Checklist App Login</div>
     <div class="login-container">
-        <h2>Login</h2>
         <form action="login.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
@@ -103,8 +219,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
+            <div class="terms">
+                By logging in I accept the <a href="termsofservice.txt">Terms of Service</a>.
+            </div>
             <button type="submit">Login</button>
         </form>
     </div>
+    <footer>
+        &copy; Hugo Industries
+    </footer>
 </body>
 </html>

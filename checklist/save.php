@@ -7,9 +7,9 @@ $response = array('status' => 'error', 'message' => 'Invalid request');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $DB = new Database();
 
-    $session_token = $_POST['session_token'] ?? '';
-    $challenge_id = $_POST['challenge_id'] ?? '';
-    $status = $_POST['status'] ?? '';
+    $session_token = htmlspecialchars($_POST['session_token'] ?? '', ENT_QUOTES, 'UTF-8');
+    $challenge_id = htmlspecialchars($_POST['challenge_id'] ?? '', ENT_QUOTES, 'UTF-8');
+    $status = htmlspecialchars($_POST['status'] ?? '', ENT_QUOTES, 'UTF-8');
 
     if (!empty($session_token) && !empty($challenge_id) && !empty($status)) {
         // Check if the session token is valid
@@ -23,12 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $challenge_id_to_change = $result[0]['challengeid'];
 
             if ($status === 'CHECKED') {
-                $query = "insert into completed (challengeid) values ('$challenge_id_to_change')";
+                
+                $query = "INSERT INTO completed (challengeid) VALUES ('$challenge_id_to_change')";
                 $DB->save($query);
 
                 $response = array('status' => 'success', 'message' => 'Challenge checked successfully');
             } elseif ($status === 'UNCHECKED') {
-                $query = "DELETE FROM completed WHERE challengeid = '$challenge_id_to_change'";
+                $query = "DELETE FROM completed WHERE challengeid = '$challenge_id_to_change' AND DATE(time) = CURDATE()";
                 $DB->save($query);
                 $response = array('status' => 'success', 'message' => 'Challenge unchecked successfully');
             } else {

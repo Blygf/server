@@ -5,12 +5,12 @@ include("classes/autoload.php");
 $DB = new Database();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $method = $_POST['method'] ?? '';
+    $method = isset($_POST['method']) ? filter_var($_POST['method'], FILTER_SANITIZE_STRING) : '';
 
     if ($method === 'DELETE') {
         // Handle DELETE method
-        $token = $_POST['token'] ?? '';
-        $challengeId = $_POST['challengeId'] ?? '';
+        $token = isset($_POST['token']) ? filter_var($_POST['token'], FILTER_SANITIZE_STRING) : '';
+        $challengeId = isset($_POST['challengeId']) ? filter_var($_POST['challengeId'], FILTER_SANITIZE_STRING) : '';
         $query = "SELECT userid FROM sessions WHERE token = '$token' LIMIT 1";
         $result = $DB->read($query);
         

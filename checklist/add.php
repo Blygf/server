@@ -3,10 +3,10 @@ include("classes/autoload.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $session_token = $_POST['session_token'] ?? '';
-    $name = $_POST['name'] ?? '';
+    $session_token = isset($_POST['session_token']) ? filter_var($_POST['session_token'], FILTER_SANITIZE_STRING) : '';
+    $name = isset($_POST['name']) ? filter_var($_POST['name'], FILTER_SANITIZE_STRING) : '';
+    $description = isset($_POST['description']) ? filter_var($_POST['description'], FILTER_SANITIZE_STRING) : '';
 
-    $description = $_POST['description'] ?? '';
 
     if (empty($description))
     {
