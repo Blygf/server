@@ -33,6 +33,7 @@ if ($result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist App</title>
+    <?php include("downloadable.php"); ?>
     <style>
         body, html {
             margin: 0;
