@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($method === 'DELETE') {
         // Handle DELETE method
         $token = isset($_POST['token']) ? filter_var($_POST['token'], FILTER_SANITIZE_STRING) : '';
-        $challengeId = isset($_POST['challengeId']) ? filter_var($_POST['challengeId'], FILTER_SANITIZE_STRING) : '';
+        $challengeId = isset($_POST['challengeId']) ? $_POST['challengeId'] : '';
         $query = "SELECT userid FROM sessions WHERE token = '$token' LIMIT 1";
         $result = $DB->read($query);
         

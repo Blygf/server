@@ -345,7 +345,7 @@ if ($result) {
                     body: new URLSearchParams({
                         method: 'DELETE',
                         token: sessionToken,
-                        challengeId: JSON.stringify(itemsToDelete)
+                        challengeId: JSON.stringify(itemsToDelete) // Ensure this is a JSON string
                     })
                 })
                 .then(response => response.json())
@@ -362,6 +362,7 @@ if ($result) {
                 });
             }
         }
+
 
         function reloadChecklist() {
             fetch('get-edit-items.php')
